@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Healing Names - Healing Through Allah's Names</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Find specific healing names of Allah for your emotional and spiritual needs. Search by condition, feeling, or situation for targeted spiritual healing.">
+</head>
+<body>
+    <div id="app">
+        <header class="main-header">
+            <div class="header-container">
+                <div class="brand-section">
+                    <a href="index.html" class="brand-link">
+                        <span class="brand-icon">🌿</span>
+                        <span class="brand-name">Healing Names</span>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="search.html" class="nav-link active">Find Healing</a>
+                    <a href="names.html" class="nav-link">Browse Names</a>
+                    <a href="duas.html" class="nav-link">Duas</a>
+                    <a href="printable-cards.html" class="nav-link">Print Cards</a>
+                    <a href="favorites.html" class="nav-link">Favorites</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="main-content">
+            <!-- Healing Search Content -->
+            <div class="healing-search-container">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h2>🌿 Find Your Healing Names</h2>
+                        <p>Tell us what you need healing for and we'll find the perfect names</p>
+                    </div>
+                </div>
+                
+                <!-- Search Interface -->
+                <div class="healing-search-box">
+                    <input type="text" id="healing-search-input" placeholder="What do you need healing for? (e.g., anxiety, depression, anger, fear...)" class="healing-search-input">
+                    <button class="healing-search-btn" onclick="searchByHealing()">
+                        <span>🔍</span>
+                        <span>Find Healing Names</span>
+                    </button>
+                </div>
+                
+                <!-- Quick Categories -->
+                <div class="healing-categories">
+                    <h3>Quick Categories</h3>
+                    <div class="category-buttons">
+                        <button class="category-btn" onclick="searchHealingCategory('anxiety')">😰 Anxiety & Fear</button>
+                        <button class="category-btn" onclick="searchHealingCategory('depression')">😔 Depression & Sadness</button>
+                        <button class="category-btn" onclick="searchHealingCategory('anger')">😡 Anger & Rage</button>
+                        <button class="category-btn" onclick="searchHealingCategory('guilt')">😞 Guilt & Shame</button>
+                        <button class="category-btn" onclick="searchHealingCategory('confusion')">🤔 Confusion & Doubt</button>
+                        <button class="category-btn" onclick="searchHealingCategory('loneliness')">😢 Loneliness & Isolation</button>
+                        <button class="category-btn" onclick="searchHealingCategory('pride')">😤 Pride & Arrogance</button>
+                        <button class="category-btn" onclick="searchHealingCategory('weakness')">😩 Weakness & Powerlessness</button>
+                        <button class="category-btn" onclick="searchHealingCategory('spiritual')">🙏 Spiritual Emptiness</button>
+                        <button class="category-btn" onclick="searchHealingCategory('relationships')">💔 Relationship Issues</button>
+                        <button class="category-btn" onclick="searchHealingCategory('financial')">💰 Financial Worries</button>
+                        <button class="category-btn" onclick="searchHealingCategory('health')">🏥 Health Concerns</button>
+                    </div>
+                </div>
+                
+                <!-- Search Results -->
+                <div class="healing-results" id="healing-results">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+                
+                <!-- Alternative Options -->
+                <div class="alternative-options">
+                    <div class="options-header">
+                        <h3>🔄 Other Ways to Find Healing</h3>
+                        <p>Explore different approaches to spiritual healing</p>
+                    </div>
+                    
+                    <div class="alt-options-list">
+                        <a href="names.html" class="alt-option-item">
+                            <div class="alt-option-emoji">📖</div>
+                            <div class="alt-option-info">
+                                <h4>Browse All 99 Names</h4>
+                                <p>Explore the complete collection with advanced search</p>
+                            </div>
+                            <div class="alt-option-arrow">→</div>
+                        </a>
+                        
+                        <a href="duas.html" class="alt-option-item">
+                            <div class="alt-option-emoji">🤲</div>
+                            <div class="alt-option-info">
+                                <h4>Healing Duas & Prayers</h4>
+                                <p>Ready-made supplications for spiritual healing</p>
+                            </div>
+                            <div class="alt-option-arrow">→</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Name Detail Modal -->
+        <div class="modal hidden" id="name-modal">
+            <div class="modal-overlay" onclick="closeModal()"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title">Name Details</h3>
+                    <button class="close-btn" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Modal content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="asma-ul-husna-data.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>

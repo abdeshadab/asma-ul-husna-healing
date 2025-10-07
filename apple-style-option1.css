@@ -1,0 +1,602 @@
+/* Apple-Style Option 1: Clean Minimalist Design */
+/* Inspired by Apple's clean, minimal aesthetic with subtle Islamic touches */
+
+:root {
+    /* Apple-inspired color palette with Islamic accents */
+    --apple-white: #ffffff;
+    --apple-gray-50: #f9f9f9;
+    --apple-gray-100: #f5f5f7;
+    --apple-gray-200: #e8e8ed;
+    --apple-gray-300: #d2d2d7;
+    --apple-gray-400: #9d9da3;
+    --apple-gray-500: #6e6e73;
+    --apple-gray-600: #515154;
+    --apple-gray-700: #424245;
+    --apple-gray-800: #1d1d1f;
+    --apple-gray-900: #000000;
+    
+    /* Islamic accent colors in Apple style */
+    --islamic-teal: #007AFF;
+    --islamic-teal-light: #34C759;
+    --islamic-gold: #FF9500;
+    --islamic-deep: #1D1D1F;
+    
+    /* Apple typography */
+    --apple-font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+    --apple-font-arabic: 'SF Arabic', 'Amiri', serif;
+    
+    /* Apple spacing system */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 64px;
+    
+    /* Apple shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+    
+    /* Apple radius */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-2xl: 24px;
+    
+    /* Apple animations */
+    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--apple-font);
+    background: var(--apple-gray-50);
+    color: var(--apple-gray-800);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Apple-style app container */
+#app {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--apple-white);
+    min-height: 100vh;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+/* Clean Apple header */
+.app-header {
+    background: var(--apple-white);
+    border-bottom: 1px solid var(--apple-gray-200);
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.app-title .arabic {
+    font-family: var(--apple-font-arabic);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--apple-gray-900);
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.02em;
+}
+
+.app-title .english {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 500;
+    color: var(--islamic-teal);
+    letter-spacing: -0.01em;
+}
+
+.app-subtitle {
+    margin-top: var(--spacing-md);
+    font-size: 1.125rem;
+    color: var(--apple-gray-500);
+    font-weight: 400;
+}
+
+/* Apple-style navigation */
+.navigation {
+    background: var(--apple-white);
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    border-bottom: 1px solid var(--apple-gray-200);
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--apple-gray-100);
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    font-family: var(--apple-font);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--apple-gray-600);
+    min-width: 80px;
+}
+
+.nav-btn:hover {
+    background: var(--apple-gray-200);
+    transform: translateY(-1px);
+}
+
+.nav-btn.active {
+    background: var(--islamic-teal);
+    color: var(--apple-white);
+    box-shadow: var(--shadow-md);
+}
+
+.nav-btn span:first-child {
+    font-size: 1.25rem;
+}
+
+/* Main content */
+.main-content {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    min-height: 60vh;
+}
+
+.page {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Welcome section */
+.welcome-section {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.verse-container {
+    background: var(--apple-white);
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-2xl);
+    margin-bottom: var(--spacing-2xl);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--apple-gray-200);
+}
+
+.arabic-verse {
+    font-family: var(--apple-font-arabic);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--apple-gray-900);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+.verse-translation {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--apple-gray-600);
+    margin-bottom: var(--spacing-md);
+    font-style: italic;
+    font-weight: 400;
+}
+
+.verse-reference {
+    color: var(--apple-gray-500);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Apple-style buttons */
+.quick-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border: none;
+    border-radius: var(--radius-xl);
+    cursor: pointer;
+    font-family: var(--apple-font);
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all var(--transition-base);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+}
+
+.action-btn.primary {
+    background: var(--islamic-teal);
+    color: var(--apple-white);
+    box-shadow: var(--shadow-md);
+}
+
+.action-btn.primary:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.action-btn.secondary {
+    background: var(--apple-gray-100);
+    color: var(--apple-gray-800);
+    border: 1px solid var(--apple-gray-300);
+}
+
+.action-btn.secondary:hover {
+    background: var(--apple-gray-200);
+    transform: translateY(-1px);
+}
+
+/* Search */
+.search-container {
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+}
+
+.search-input {
+    max-width: 500px;
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: 1px solid var(--apple-gray-300);
+    border-radius: var(--radius-xl);
+    font-family: var(--apple-font);
+    font-size: 1rem;
+    background: var(--apple-white);
+    transition: all var(--transition-base);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--islamic-teal);
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+/* Names grid */
+.names-grid, .favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+/* Apple-style name cards */
+.name-card {
+    background: var(--apple-white);
+    border: 1px solid var(--apple-gray-200);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-lg);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.name-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--apple-gray-300);
+}
+
+.name-number {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: var(--islamic-teal);
+    color: var(--apple-white);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.name-arabic {
+    font-family: var(--apple-font-arabic);
+    font-size: 2rem;
+    color: var(--apple-gray-900);
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+    font-weight: 500;
+}
+
+.name-transliteration {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--islamic-teal);
+    text-align: center;
+    margin-bottom: var(--spacing-xs);
+    letter-spacing: -0.01em;
+}
+
+.name-meaning {
+    color: var(--apple-gray-600);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+.card-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.detail-btn, .meditate-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--apple-gray-300);
+    background: var(--apple-gray-100);
+    color: var(--apple-gray-700);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-family: var(--apple-font);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all var(--transition-base);
+}
+
+.detail-btn:hover, .meditate-btn:hover {
+    background: var(--islamic-teal);
+    color: var(--apple-white);
+    border-color: var(--islamic-teal);
+}
+
+/* Apple-style modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: var(--spacing-lg);
+}
+
+.modal-content {
+    background: var(--apple-white);
+    border-radius: var(--radius-2xl);
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalSlideIn 0.3s ease-out;
+    box-shadow: var(--shadow-xl);
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-header {
+    background: var(--islamic-teal);
+    color: var(--apple-white);
+    padding: var(--spacing-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+}
+
+.modal-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: var(--apple-white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.modal-body {
+    padding: var(--spacing-lg);
+}
+
+/* Meditation display */
+.meditation-name {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-xl);
+    background: var(--apple-gray-50);
+    border-radius: var(--radius-xl);
+}
+
+.meditation-arabic {
+    font-family: var(--apple-font-arabic);
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    color: var(--apple-gray-900);
+    margin-bottom: var(--spacing-md);
+    font-weight: 500;
+}
+
+.meditation-transliteration {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    color: var(--islamic-teal);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.01em;
+}
+
+.meditation-meaning {
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    color: var(--apple-gray-600);
+    font-weight: 400;
+}
+
+/* Controls */
+.meditation-controls {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.meditation-btn {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: 1px solid var(--apple-gray-300);
+    background: var(--apple-white);
+    color: var(--apple-gray-800);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    font-family: var(--apple-font);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all var(--transition-base);
+}
+
+.meditation-btn:hover {
+    background: var(--islamic-teal);
+    color: var(--apple-white);
+    border-color: var(--islamic-teal);
+}
+
+.meditation-timer {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--islamic-teal);
+    background: var(--apple-gray-50);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-xl);
+    font-family: var(--apple-font);
+    letter-spacing: -0.02em;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .navigation {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-xs);
+    }
+    
+    .nav-btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        min-width: 60px;
+        font-size: 0.75rem;
+    }
+    
+    .names-grid, .favorites-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .modal-content {
+        margin: var(--spacing-md);
+        max-height: calc(100vh - 2rem);
+    }
+    
+    .card-actions {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .detail-btn, .meditate-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Utilities */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Focus states */
+*:focus-visible {
+    outline: 2px solid var(--islamic-teal);
+    outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+    background-color: rgba(0, 122, 255, 0.2);
+    color: var(--apple-gray-900);
+}

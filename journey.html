@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Healing Journey - Healing Through Allah's Names</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="A complete guided healing journey combining Allah's beautiful names with Islamic self-care practices for holistic spiritual wellness.">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="app-logo">
+                    <div class="logo-icon">🌙</div>
+                    <div class="app-title">
+                        <h1 class="arabic">رحلة الشفاء</h1>
+                        <p class="english">Complete Healing Journey</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <a href="index.html" class="nav-link" title="Home">🏠</a>
+                    <button class="theme-toggle" onclick="toggleTheme()" title="Switch Theme">🌙</button>
+                    <button class="audio-toggle" onclick="toggleGlobalAudio()" title="Toggle Audio">🔊</button>
+                    <a href="favorites.html" class="favorites-link" title="Your Healing Collection">
+                        <span class="favorites-icon">❤️</span>
+                        <span class="favorites-count" id="header-favorites-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Healing Journey Content -->
+            <div class="healing-journey-container">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h2>🌙 Your Complete Healing Journey</h2>
+                        <p>A holistic approach to wellness through Allah's names and Islamic self-care practices</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation breadcrumb -->
+                <div class="journey-breadcrumb" id="journey-breadcrumb">
+                    <button class="breadcrumb-item active" onclick="showJourneyStep('needs')">
+                        <span class="breadcrumb-number">1</span>
+                        <span>Select Need</span>
+                    </button>
+                    <span class="breadcrumb-arrow">→</span>
+                    <button class="breadcrumb-item disabled" onclick="showJourneyStep('names')">
+                        <span class="breadcrumb-number">2</span>
+                        <span>Healing Names</span>
+                    </button>
+                    <span class="breadcrumb-arrow">→</span>
+                    <button class="breadcrumb-item disabled" onclick="showJourneyStep('selfcare')">
+                        <span class="breadcrumb-number">3</span>
+                        <span>Self-Care</span>
+                    </button>
+                    <span class="breadcrumb-arrow">→</span>
+                    <button class="breadcrumb-item disabled" onclick="showJourneyStep('routine')">
+                        <span class="breadcrumb-number">4</span>
+                        <span>Daily Routine</span>
+                    </button>
+                </div>
+                
+                <!-- Step 1: Need Selection -->
+                <div class="journey-content" id="journey-content">
+                    <div class="journey-section active" id="needs-section">
+                        <div class="section-header">
+                            <h3>What do you need healing for?</h3>
+                            <p>Choose from common needs or describe your specific situation</p>
+                        </div>
+                        
+                        <div class="needs-list">
+                            <div class="need-item" onclick="selectNeedFromList('anxiety', 'Anxiety & Fear', '😰')">
+                                <div class="need-emoji">😰</div>
+                                <div class="need-info">
+                                    <h4>Anxiety & Fear</h4>
+                                    <p>Feeling worried, nervous, or afraid about the future</p>
+                                </div>
+                                <div class="need-arrow">→</div>
+                            </div>
+                            
+                            <div class="need-item" onclick="selectNeedFromList('depression', 'Sadness & Depression', '😔')">
+                                <div class="need-emoji">😔</div>
+                                <div class="need-info">
+                                    <h4>Sadness & Depression</h4>
+                                    <p>Feeling down, hopeless, or emotionally heavy</p>
+                                </div>
+                                <div class="need-arrow">→</div>
+                            </div>
+                            
+                            <div class="need-item" onclick="selectNeedFromList('anger', 'Anger & Rage', '😡')">
+                                <div class="need-emoji">😡</div>
+                                <div class="need-info">
+                                    <h4>Anger & Rage</h4>
+                                    <p>Struggling with anger, irritation, or resentment</p>
+                                </div>
+                                <div class="need-arrow">→</div>
+                            </div>
+                            
+                            <div class="need-item" onclick="selectNeedFromList('spiritual', 'Spiritual Emptiness', '🙏')">
+                                <div class="need-emoji">🙏</div>
+                                <div class="need-info">
+                                    <h4>Spiritual Emptiness</h4>
+                                    <p>Feeling disconnected from Allah or lacking faith</p>
+                                </div>
+                                <div class="need-arrow">→</div>
+                            </div>
+                            
+                            <div class="need-item" onclick="selectNeedFromList('stress', 'Stress & Overwhelm', '😩')">
+                                <div class="need-emoji">😩</div>
+                                <div class="need-info">
+                                    <h4>Stress & Overwhelm</h4>
+                                    <p>Feeling overwhelmed by life's pressures and responsibilities</p>
+                                </div>
+                                <div class="need-arrow">→</div>
+                            </div>
+                            
+                            <div class="need-item" onclick="selectNeedFromList('relationships', 'Relationship Issues', '💔')">
+                                <div class="need-emoji">💔</div>
+                                <div class="need-info">
+                                    <h4>Relationship Issues</h4>
+                                    <p>Problems with family, friends, or marriage</p>
+                                </div>
+                                <div class="need-arrow">→</div>
+                            </div>
+                            
+                            <div class="need-item custom" onclick="showCustomNeedInput()">
+                                <div class="need-emoji">✏️</div>
+                                <div class="need-info">
+                                    <h4>Something Else</h4>
+                                    <p>Describe your specific healing need</p>
+                                </div>
+                                <div class="need-arrow">→</div>
+                            </div>
+                        </div>
+                        
+                        <div class="custom-input-section hidden" id="custom-input-section">
+                            <div class="custom-input-container">
+                                <h4>Tell us what you need healing for:</h4>
+                                <input type="text" id="custom-healing-input" placeholder="e.g., loneliness, guilt, financial worries..." class="custom-input">
+                                <div class="custom-input-actions">
+                                    <button class="custom-submit-btn" onclick="submitCustomNeed()">Continue →</button>
+                                    <button class="custom-cancel-btn" onclick="hideCustomNeedInput()">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Healing Names (Hidden initially) -->
+                    <div class="journey-section hidden" id="names-section">
+                        <div class="section-header">
+                            <button class="back-btn" onclick="showJourneyStep('needs')">← Back to Needs</button>
+                            <h3>Healing Names for <span id="selected-need-title"></span></h3>
+                            <p>These names of Allah can provide healing for your specific need</p>
+                        </div>
+                        
+                        <div class="names-list" id="healing-names-list">
+                            <!-- Names will be populated here -->
+                        </div>
+                        
+                        <div class="section-actions">
+                            <button class="continue-btn" onclick="showJourneyStep('selfcare')">Continue to Self-Care →</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Self-Care (Hidden initially) -->
+                    <div class="journey-section hidden" id="selfcare-section">
+                        <div class="section-header">
+                            <button class="back-btn" onclick="showJourneyStep('names')">← Back to Names</button>
+                            <h3>Islamic Self-Care for <span id="selfcare-need-title"></span></h3>
+                            <p>Complement your spiritual healing with these prophetic practices</p>
+                        </div>
+                        
+                        <div class="selfcare-list" id="selfcare-practices-list">
+                            <!-- Self-care practices will be populated here -->
+                        </div>
+                        
+                        <div class="section-actions">
+                            <button class="continue-btn" onclick="showJourneyStep('routine')">Create Daily Routine →</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4: Daily Routine (Hidden initially) -->
+                    <div class="journey-section hidden" id="routine-section">
+                        <div class="section-header">
+                            <button class="back-btn" onclick="showJourneyStep('selfcare')">← Back to Self-Care</button>
+                            <h3>Your Personalized Daily Routine</h3>
+                            <p>A complete healing plan combining names and self-care</p>
+                        </div>
+                        
+                        <div class="routine-list" id="daily-routine-list">
+                            <!-- Routine will be populated here -->
+                        </div>
+                        
+                        <div class="journey-completion">
+                            <div class="completion-card">
+                                <h4>🌟 Your Healing Journey is Ready!</h4>
+                                <p>Start implementing this routine today and trust in Allah's healing power.</p>
+                                <div class="completion-actions">
+                                    <button class="action-btn primary" onclick="saveHealingPlan()">
+                                        💾 Save My Healing Plan
+                                    </button>
+                                    <a href="duas.html" class="action-btn secondary">
+                                        🤲 View Healing Duas
+                                    </a>
+                                    <button class="restart-btn" onclick="restartJourney()">
+                                        🔄 Start New Journey
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="asma-ul-husna-data.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/journey.js"></script>
+</body>
+</html>

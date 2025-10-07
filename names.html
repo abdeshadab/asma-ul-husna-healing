@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse All 99 Names - Healing Through Allah's Names</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Browse the complete collection of 99 Beautiful Names of Allah with healing properties, spiritual guidance, and advanced search capabilities.">
+</head>
+<body>
+    <div id="app">
+        <header class="main-header">
+            <div class="header-container">
+                <div class="brand-section">
+                    <a href="index.html" class="brand-link">
+                        <span class="brand-icon">🌿</span>
+                        <span class="brand-name">Healing Names</span>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="search.html" class="nav-link">Find Healing</a>
+                    <a href="names.html" class="nav-link active">Browse Names</a>
+                    <a href="duas.html" class="nav-link">Duas</a>
+                    <a href="printable-cards.html" class="nav-link">Print Cards</a>
+                    <a href="favorites.html" class="nav-link">Favorites</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="main-content">
+            <!-- Names Browser Content -->
+            <div class="names-browser-container">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h2>📖 The 99 Healing Names</h2>
+                        <p>Explore Allah's names with their healing properties and spiritual guidance</p>
+                    </div>
+                </div>
+
+                <!-- Enhanced Search -->
+                <div class="search-section">
+                    <div class="search-container enhanced">
+                        <div class="search-box">
+                            <input type="text" id="search-input" placeholder="Search by name, meaning, or healing properties..." class="search-input">
+                            <button class="search-btn" onclick="performAdvancedSearch()">
+                                <span>🔍</span>
+                            </button>
+                        </div>
+                        
+                        <div class="search-filters">
+                            <div class="filter-group">
+                                <label>Sort by:</label>
+                                <select id="sort-select" class="filter-select">
+                                    <option value="id">Order (1-99)</option>
+                                    <option value="arabic">Arabic (A-Z)</option>
+                                    <option value="transliteration">English (A-Z)</option>
+                                    <option value="enhanced">Enhanced First</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label>Category:</label>
+                                <select id="category-filter" class="filter-select">
+                                    <option value="all">All Names</option>
+                                    <option value="enhanced">Enhanced Only</option>
+                                    <option value="mercy">Mercy & Compassion</option>
+                                    <option value="power">Power & Strength</option>
+                                    <option value="knowledge">Knowledge & Wisdom</option>
+                                    <option value="forgiveness">Forgiveness</option>
+                                    <option value="guidance">Guidance</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label>View:</label>
+                                <div class="view-toggle">
+                                    <button class="view-btn" data-view="grid">⊞</button>
+                                    <button class="view-btn active" data-view="list">☰</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Names Container -->
+                <div class="names-container">
+                    <div class="names-grid" id="names-grid">
+                        <!-- Names will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="names-stats">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="total-names">99</div>
+                            <div class="stat-label">Beautiful Names</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="enhanced-names">0</div>
+                            <div class="stat-label">Enhanced with Healing</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="favorites-count">0</div>
+                            <div class="stat-label">In Your Collection</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Related Actions -->
+                <div class="related-actions">
+                    <div class="actions-header">
+                        <h3>🔗 Continue Your Healing Journey</h3>
+                        <p>Explore other ways to connect with Allah's names</p>
+                    </div>
+                    
+                    <div class="actions-list">
+                        <a href="search.html" class="action-item">
+                            <div class="action-emoji">🌿</div>
+                            <div class="action-info">
+                                <h4>Find Specific Healing</h4>
+                                <p>Search for names based on your current needs</p>
+                            </div>
+                            <div class="action-arrow">→</div>
+                        </a>
+                        
+                        <a href="duas.html" class="action-item">
+                            <div class="action-emoji">🤲</div>
+                            <div class="action-info">
+                                <h4>Healing Duas & Prayers</h4>
+                                <p>Ready-made supplications using these names</p>
+                            </div>
+                            <div class="action-arrow">→</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Name Detail Modal -->
+        <div class="modal hidden" id="name-modal">
+            <div class="modal-overlay" onclick="closeModal()"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title">Name Details</h3>
+                    <button class="close-btn" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Modal content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="asma-ul-husna-data.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/names.js"></script>
+</body>
+</html>

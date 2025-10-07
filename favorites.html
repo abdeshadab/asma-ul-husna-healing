@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Healing Collection - Healing Through Allah's Names</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Your personal collection of favorite healing names and duas. Access your saved spiritual content for daily practice and reflection.">
+</head>
+<body>
+    <div id="app">
+        <header class="main-header">
+            <div class="header-container">
+                <div class="brand-section">
+                    <a href="index.html" class="brand-link">
+                        <span class="brand-icon">🌿</span>
+                        <span class="brand-name">Healing Names</span>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="search.html" class="nav-link">Find Healing</a>
+                    <a href="names.html" class="nav-link">Browse Names</a>
+                    <a href="duas.html" class="nav-link">Duas</a>
+                    <a href="printable-cards.html" class="nav-link">Print Cards</a>
+                    <a href="favorites.html" class="nav-link active">Favorites</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="main-content">
+            <!-- Favorites Content -->
+            <div class="favorites-container">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h2>❤️ Your Healing Collection</h2>
+                        <p>Your personally curated collection of Allah's names and healing duas</p>
+                    </div>
+                </div>
+
+                <!-- Collection Summary -->
+                <div class="collection-summary">
+                    <div class="summary-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="total-favorites">0</div>
+                            <div class="stat-label">Total Favorites</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="names-count">0</div>
+                            <div class="stat-label">Names</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="duas-count">0</div>
+                            <div class="stat-label">Duas</div>
+                        </div>
+                    </div>
+                    
+                    <div class="collection-actions">
+                        <button class="action-btn secondary" onclick="exportFavorites()">
+                            📤 Export Collection
+                        </button>
+                        <button class="action-btn secondary" onclick="shareCollection()">
+                            🔗 Share Collection
+                        </button>
+                        <button class="action-btn danger" onclick="clearAllFavorites()">
+                            🗑️ Clear All
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="favorites-tabs">
+                    <button class="tab-btn active" data-tab="all" onclick="showFavoritesTab('all')">
+                        <span class="tab-icon">⭐</span>
+                        <span>All Favorites</span>
+                    </button>
+                    <button class="tab-btn" data-tab="names" onclick="showFavoritesTab('names')">
+                        <span class="tab-icon">📖</span>
+                        <span>Names</span>
+                    </button>
+                    <button class="tab-btn" data-tab="duas" onclick="showFavoritesTab('duas')">
+                        <span class="tab-icon">🤲</span>
+                        <span>Duas</span>
+                    </button>
+                </div>
+
+                <!-- Favorites Content -->
+                <div class="favorites-content" id="favorites-content">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state hidden" id="empty-state">
+                    <div class="empty-icon">💝</div>
+                    <div class="empty-title">Start Building Your Collection</div>
+                    <div class="empty-message">
+                        <p>Your healing collection is empty. Add names and duas that resonate with your spiritual journey.</p>
+                        <p>Favorites are saved locally on your device and will persist between visits.</p>
+                    </div>
+                    <div class="empty-actions">
+                        <a href="names.html" class="action-btn primary">
+                            📖 Browse Names
+                        </a>
+                        <a href="duas.html" class="action-btn secondary">
+                            🤲 Explore Duas
+                        </a>
+                        <a href="search.html" class="action-btn secondary">
+                            🔍 Find Healing
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Practice Mode -->
+                <div class="practice-mode hidden" id="practice-mode">
+                    <div class="practice-header">
+                        <h3>🧘‍♂️ Daily Practice Session</h3>
+                        <p>Focus on your favorite names and duas</p>
+                        <button class="close-practice" onclick="closePracticeMode()">×</button>
+                    </div>
+                    
+                    <div class="practice-content" id="practice-content">
+                        <!-- Practice content will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="practice-controls">
+                        <button class="practice-btn" onclick="previousPracticeItem()">← Previous</button>
+                        <button class="practice-btn primary" onclick="togglePracticeTimer()">Start Practice</button>
+                        <button class="practice-btn" onclick="nextPracticeItem()">Next →</button>
+                    </div>
+                    
+                    <div class="practice-timer hidden" id="practice-timer">
+                        <div class="timer-display">
+                            <div class="timer-time" id="timer-time">00:00</div>
+                            <div class="timer-label">Practice Time</div>
+                        </div>
+                        <div class="timer-controls">
+                            <button class="timer-btn" onclick="resetPracticeTimer()">Reset</button>
+                            <button class="timer-btn" onclick="pausePracticeTimer()">Pause</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <div class="actions-header">
+                        <h3>⚡ Quick Actions</h3>
+                        <p>Make the most of your collection</p>
+                    </div>
+                    
+                    <div class="actions-grid">
+                        <button class="quick-action-card" onclick="startDailyPractice()">
+                            <div class="action-icon">🌅</div>
+                            <h4>Daily Practice</h4>
+                            <p>Focus session with your favorites</p>
+                        </button>
+                        
+                        <button class="quick-action-card" onclick="randomFromFavorites()">
+                            <div class="action-icon">🎲</div>
+                            <h4>Random Selection</h4>
+                            <p>Get a random favorite for reflection</p>
+                        </button>
+                        
+                        <button class="quick-action-card" onclick="createCustomDua()">
+                            <div class="action-icon">✨</div>
+                            <h4>Create Custom Dua</h4>
+                            <p>Combine your favorite names</p>
+                        </button>
+                        
+                        <button class="quick-action-card" onclick="exportForPrint()">
+                            <div class="action-icon">🖨️</div>
+                            <h4>Print Collection</h4>
+                            <p>Create a printable version</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Related Navigation -->
+                <div class="related-navigation">
+                    <div class="nav-header">
+                        <h3>🧭 Continue Your Journey</h3>
+                        <p>Discover more healing content</p>
+                    </div>
+                    
+                    <div class="nav-links">
+                        <a href="search.html" class="nav-link-card">
+                            <div class="nav-emoji">🔍</div>
+                            <div class="nav-info">
+                                <h4>Find More Healing</h4>
+                                <p>Search for specific spiritual needs</p>
+                            </div>
+                            <div class="nav-arrow">→</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Name Detail Modal -->
+        <div class="modal hidden" id="name-modal">
+            <div class="modal-overlay" onclick="closeModal()"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title">Name Details</h3>
+                    <button class="close-btn" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Modal content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dua Detail Modal -->
+        <div class="modal hidden" id="dua-modal">
+            <div class="modal-overlay" onclick="closeDuaModal()"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="dua-modal-title">Dua Details</h3>
+                    <button class="close-btn" onclick="closeDuaModal()">&times;</button>
+                </div>
+                <div class="modal-body" id="dua-modal-body">
+                    <!-- Modal content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Custom Dua Creator Modal -->
+        <div class="modal hidden" id="custom-dua-modal">
+            <div class="modal-overlay" onclick="closeCustomDuaModal()"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>✨ Create Custom Dua</h3>
+                    <button class="close-btn" onclick="closeCustomDuaModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="custom-dua-creator">
+                        <div class="creator-step">
+                            <h4>Select Your Favorite Names</h4>
+                            <div class="selected-names" id="selected-names">
+                                <!-- Selected names will appear here -->
+                            </div>
+                        </div>
+                        
+                        <div class="creator-step">
+                            <h4>Generated Dua</h4>
+                            <div class="generated-dua" id="generated-dua">
+                                <div class="dua-arabic" id="custom-dua-arabic"></div>
+                                <div class="dua-transliteration" id="custom-dua-transliteration"></div>
+                                <div class="dua-translation" id="custom-dua-translation"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="creator-actions">
+                            <button class="action-btn primary" onclick="generateCustomDua()">
+                                ✨ Generate Dua
+                            </button>
+                            <button class="action-btn secondary" onclick="copyCustomDua()">
+                                📋 Copy
+                            </button>
+                            <button class="action-btn secondary" onclick="saveCustomDua()">
+                                💾 Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="asma-ul-husna-data.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/favorites.js"></script>
+</body>
+</html>

@@ -1,0 +1,788 @@
+/* Apple-Style Option 3: iOS 17 Modern */
+/* Inspired by iOS 17's interactive widgets, Live Activities, and StandBy mode */
+
+:root {
+    /* iOS 17 Color System */
+    --ios17-bg-primary: #f2f2f7;
+    --ios17-bg-secondary: #ffffff;
+    --ios17-bg-tertiary: #f2f2f7;
+    --ios17-bg-quaternary: #e5e5ea;
+    
+    --ios17-text-primary: #000000;
+    --ios17-text-secondary: #3c3c43;
+    --ios17-text-tertiary: #3c3c4399;
+    --ios17-text-quaternary: #3c3c434d;
+    
+    /* iOS 17 Interactive Colors */
+    --ios17-blue: #007aff;
+    --ios17-green: #34c759;
+    --ios17-orange: #ff9500;
+    --ios17-red: #ff3b30;
+    --ios17-purple: #af52de;
+    --ios17-pink: #ff2d92;
+    --ios17-teal: #5ac8fa;
+    --ios17-indigo: #5856d6;
+    
+    /* Islamic accent colors in iOS 17 style */
+    --islamic-primary: #34c759;
+    --islamic-secondary: #007aff;
+    --islamic-accent: #ff9500;
+    --islamic-gradient: linear-gradient(135deg, #34c759 0%, #007aff 100%);
+    
+    /* iOS 17 Materials */
+    --ios17-material-thick: rgba(255, 255, 255, 0.8);
+    --ios17-material-regular: rgba(255, 255, 255, 0.7);
+    --ios17-material-thin: rgba(255, 255, 255, 0.6);
+    --ios17-material-ultraThin: rgba(255, 255, 255, 0.5);
+    
+    /* Shadows and effects */
+    --ios17-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+    --ios17-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --ios17-shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+    --ios17-shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+    
+    /* Radius system */
+    --ios17-radius-xs: 4px;
+    --ios17-radius-sm: 8px;
+    --ios17-radius-md: 12px;
+    --ios17-radius-lg: 16px;
+    --ios17-radius-xl: 20px;
+    --ios17-radius-2xl: 24px;
+    --ios17-radius-3xl: 32px;
+    
+    /* Typography scale */
+    --ios17-text-xs: 11px;
+    --ios17-text-sm: 13px;
+    --ios17-text-base: 15px;
+    --ios17-text-lg: 17px;
+    --ios17-text-xl: 19px;
+    --ios17-text-2xl: 22px;
+    --ios17-text-3xl: 28px;
+    --ios17-text-4xl: 34px;
+    
+    /* Spacing system */
+    --ios17-space-1: 2px;
+    --ios17-space-2: 4px;
+    --ios17-space-3: 8px;
+    --ios17-space-4: 12px;
+    --ios17-space-5: 16px;
+    --ios17-space-6: 20px;
+    --ios17-space-8: 24px;
+    --ios17-space-10: 32px;
+    --ios17-space-12: 40px;
+    --ios17-space-16: 48px;
+    --ios17-space-20: 64px;
+    
+    /* Animation curves */
+    --ios17-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ios17-ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ios17-ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Dark mode variables */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ios17-bg-primary: #000000;
+        --ios17-bg-secondary: #1c1c1e;
+        --ios17-bg-tertiary: #2c2c2e;
+        --ios17-bg-quaternary: #3a3a3c;
+        
+        --ios17-text-primary: #ffffff;
+        --ios17-text-secondary: #ebebf5;
+        --ios17-text-tertiary: #ebebf599;
+        --ios17-text-quaternary: #ebebf54d;
+        
+        --ios17-material-thick: rgba(28, 28, 30, 0.9);
+        --ios17-material-regular: rgba(28, 28, 30, 0.8);
+        --ios17-material-thin: rgba(28, 28, 30, 0.7);
+        --ios17-material-ultraThin: rgba(28, 28, 30, 0.6);
+    }
+}
+
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+    background: var(--ios17-bg-primary);
+    color: var(--ios17-text-primary);
+    line-height: 1.47;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: var(--ios17-text-base);
+}
+
+/* iOS 17 App Container */
+#app {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--ios17-bg-primary);
+    min-height: 100vh;
+}
+
+/* Interactive Header Widget */
+.app-header {
+    background: var(--ios17-material-thick);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 0.5px solid var(--ios17-bg-quaternary);
+    padding: var(--ios17-space-8) var(--ios17-space-5);
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-radius: 0 0 var(--ios17-radius-2xl) var(--ios17-radius-2xl);
+    margin: 0 var(--ios17-space-5);
+    box-shadow: var(--ios17-shadow-sm);
+}
+
+.app-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--ios17-space-1);
+}
+
+.app-title .arabic {
+    font-family: 'SF Arabic', 'Amiri', serif;
+    font-size: var(--ios17-text-4xl);
+    font-weight: 600;
+    color: var(--ios17-text-primary);
+    letter-spacing: -0.5px;
+    margin-bottom: var(--ios17-space-1);
+}
+
+.app-title .english {
+    font-size: var(--ios17-text-lg);
+    font-weight: 590;
+    color: var(--islamic-primary);
+    letter-spacing: -0.2px;
+}
+
+.app-subtitle {
+    margin-top: var(--ios17-space-3);
+    font-size: var(--ios17-text-sm);
+    color: var(--ios17-text-secondary);
+    font-weight: 400;
+    letter-spacing: -0.1px;
+}
+
+/* iOS 17 Tab Bar */
+.navigation {
+    background: var(--ios17-material-thick);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: var(--ios17-space-2) var(--ios17-space-5);
+    display: flex;
+    justify-content: center;
+    gap: var(--ios17-space-2);
+    border-top: 0.5px solid var(--ios17-bg-quaternary);
+    border-radius: var(--ios17-radius-2xl) var(--ios17-radius-2xl) 0 0;
+    margin: 0 var(--ios17-space-5);
+    position: sticky;
+    bottom: 0;
+    z-index: 99;
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--ios17-space-1);
+    padding: var(--ios17-space-3) var(--ios17-space-4);
+    background: transparent;
+    border: none;
+    border-radius: var(--ios17-radius-md);
+    cursor: pointer;
+    transition: all 0.25s var(--ios17-ease-in-out);
+    font-family: inherit;
+    font-size: var(--ios17-text-xs);
+    font-weight: 500;
+    color: var(--ios17-text-tertiary);
+    min-width: 70px;
+    position: relative;
+}
+
+.nav-btn.active {
+    color: var(--islamic-primary);
+    background: rgba(52, 199, 89, 0.1);
+}
+
+.nav-btn:hover {
+    background: var(--ios17-bg-tertiary);
+    transform: scale(1.05);
+}
+
+.nav-btn span:first-child {
+    font-size: var(--ios17-text-xl);
+    transition: transform 0.25s var(--ios17-ease-spring);
+}
+
+.nav-btn:active span:first-child {
+    transform: scale(0.9);
+}
+
+/* Main content */
+.main-content {
+    padding: var(--ios17-space-8) var(--ios17-space-5) var(--ios17-space-16);
+    min-height: 70vh;
+}
+
+.page {
+    animation: slideUp 0.4s var(--ios17-ease-out);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* iOS 17 Welcome Widget */
+.welcome-section {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.verse-container {
+    background: var(--ios17-bg-secondary);
+    padding: var(--ios17-space-8);
+    border-radius: var(--ios17-radius-3xl);
+    margin-bottom: var(--ios17-space-8);
+    box-shadow: var(--ios17-shadow-md);
+    border: 0.5px solid var(--ios17-bg-quaternary);
+    position: relative;
+    overflow: hidden;
+}
+
+.verse-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--islamic-gradient);
+    border-radius: var(--ios17-radius-3xl) var(--ios17-radius-3xl) 0 0;
+}
+
+.arabic-verse {
+    font-family: 'SF Arabic', 'Amiri', serif;
+    font-size: var(--ios17-text-2xl);
+    color: var(--ios17-text-primary);
+    margin-bottom: var(--ios17-space-5);
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.verse-translation {
+    font-size: var(--ios17-text-base);
+    color: var(--ios17-text-secondary);
+    margin-bottom: var(--ios17-space-4);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.verse-reference {
+    color: var(--islamic-primary);
+    font-size: var(--ios17-text-sm);
+    font-weight: 590;
+}
+
+/* iOS 17 Action Buttons */
+.quick-actions {
+    display: flex;
+    gap: var(--ios17-space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--ios17-space-6);
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--ios17-space-2);
+    padding: var(--ios17-space-4) var(--ios17-space-6);
+    border: none;
+    border-radius: var(--ios17-radius-2xl);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: var(--ios17-text-base);
+    font-weight: 590;
+    transition: all 0.2s var(--ios17-ease-in-out);
+    text-decoration: none;
+    letter-spacing: -0.2px;
+    position: relative;
+}
+
+.action-btn.primary {
+    background: var(--islamic-gradient);
+    color: white;
+    box-shadow: var(--ios17-shadow-md);
+}
+
+.action-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--ios17-shadow-lg);
+}
+
+.action-btn.primary:active {
+    transform: translateY(0);
+}
+
+.action-btn.secondary {
+    background: var(--ios17-bg-secondary);
+    color: var(--ios17-text-primary);
+    border: 0.5px solid var(--ios17-bg-quaternary);
+    box-shadow: var(--ios17-shadow-sm);
+}
+
+.action-btn.secondary:hover {
+    background: var(--ios17-bg-tertiary);
+    transform: translateY(-1px);
+}
+
+/* iOS 17 Search */
+.search-container {
+    margin-bottom: var(--ios17-space-8);
+    text-align: center;
+}
+
+.search-input {
+    max-width: 500px;
+    width: 100%;
+    padding: var(--ios17-space-4) var(--ios17-space-5);
+    background: var(--ios17-bg-secondary);
+    border: 0.5px solid var(--ios17-bg-quaternary);
+    border-radius: var(--ios17-radius-2xl);
+    font-family: inherit;
+    font-size: var(--ios17-text-base);
+    color: var(--ios17-text-primary);
+    transition: all 0.2s var(--ios17-ease-in-out);
+    box-shadow: var(--ios17-shadow-sm);
+}
+
+.search-input::placeholder {
+    color: var(--ios17-text-tertiary);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--islamic-primary);
+    box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.1), var(--ios17-shadow-md);
+    transform: scale(1.02);
+}
+
+/* iOS 17 Interactive Cards */
+.names-grid, .favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--ios17-space-5);
+    margin-top: var(--ios17-space-8);
+}
+
+.name-card {
+    background: var(--ios17-bg-secondary);
+    border: 0.5px solid var(--ios17-bg-quaternary);
+    border-radius: var(--ios17-radius-2xl);
+    padding: var(--ios17-space-6);
+    transition: all 0.3s var(--ios17-ease-spring);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--ios17-shadow-sm);
+}
+
+.name-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--ios17-shadow-lg);
+    border-color: rgba(52, 199, 89, 0.3);
+}
+
+.name-card:active {
+    transform: translateY(-2px) scale(1.01);
+}
+
+.name-number {
+    position: absolute;
+    top: var(--ios17-space-4);
+    right: var(--ios17-space-4);
+    background: var(--islamic-gradient);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--ios17-text-xs);
+    font-weight: 700;
+    box-shadow: var(--ios17-shadow-sm);
+}
+
+.name-arabic {
+    font-family: 'SF Arabic', 'Amiri', serif;
+    font-size: var(--ios17-text-3xl);
+    color: var(--ios17-text-primary);
+    margin-bottom: var(--ios17-space-2);
+    text-align: center;
+    font-weight: 500;
+}
+
+.name-transliteration {
+    font-size: var(--ios17-text-xl);
+    font-weight: 600;
+    color: var(--islamic-primary);
+    text-align: center;
+    margin-bottom: var(--ios17-space-1);
+    letter-spacing: -0.3px;
+}
+
+.name-meaning {
+    color: var(--ios17-text-secondary);
+    text-align: center;
+    margin-bottom: var(--ios17-space-5);
+    font-size: var(--ios17-text-sm);
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.card-actions {
+    display: flex;
+    gap: var(--ios17-space-2);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.detail-btn, .meditate-btn {
+    padding: var(--ios17-space-2) var(--ios17-space-4);
+    background: var(--ios17-bg-tertiary);
+    color: var(--ios17-text-primary);
+    border: 0.5px solid var(--ios17-bg-quaternary);
+    border-radius: var(--ios17-radius-lg);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: var(--ios17-text-sm);
+    font-weight: 500;
+    transition: all 0.2s var(--ios17-ease-in-out);
+}
+
+.detail-btn:hover, .meditate-btn:hover {
+    background: var(--islamic-primary);
+    color: white;
+    border-color: var(--islamic-primary);
+    transform: scale(1.05);
+}
+
+.detail-btn:active, .meditate-btn:active {
+    transform: scale(0.95);
+}
+
+/* iOS 17 Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: var(--ios17-space-5);
+}
+
+.modal-content {
+    background: var(--ios17-material-thick);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-radius: var(--ios17-radius-3xl);
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalScale 0.3s var(--ios17-ease-spring);
+    box-shadow: var(--ios17-shadow-xl);
+    border: 0.5px solid var(--ios17-bg-quaternary);
+}
+
+@keyframes modalScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-header {
+    background: var(--islamic-gradient);
+    color: white;
+    padding: var(--ios17-space-6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: var(--ios17-radius-3xl) var(--ios17-radius-3xl) 0 0;
+}
+
+.modal-header h3 {
+    font-size: var(--ios17-text-xl);
+    font-weight: 600;
+    letter-spacing: -0.3px;
+}
+
+.close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: var(--ios17-text-lg);
+    cursor: pointer;
+    padding: var(--ios17-space-2);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s var(--ios17-ease-in-out);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.close-btn:active {
+    transform: scale(0.9);
+}
+
+.modal-body {
+    padding: var(--ios17-space-6);
+    color: var(--ios17-text-primary);
+}
+
+/* Meditation interface */
+.meditation-name {
+    text-align: center;
+    margin-bottom: var(--ios17-space-8);
+    padding: var(--ios17-space-8);
+    background: var(--ios17-bg-secondary);
+    border-radius: var(--ios17-radius-2xl);
+    border: 0.5px solid var(--ios17-bg-quaternary);
+}
+
+.meditation-arabic {
+    font-family: 'SF Arabic', 'Amiri', serif;
+    font-size: var(--ios17-text-4xl);
+    color: var(--ios17-text-primary);
+    margin-bottom: var(--ios17-space-4);
+    font-weight: 500;
+}
+
+.meditation-transliteration {
+    font-size: var(--ios17-text-2xl);
+    color: var(--islamic-primary);
+    font-weight: 600;
+    margin-bottom: var(--ios17-space-2);
+    letter-spacing: -0.3px;
+}
+
+.meditation-meaning {
+    font-size: var(--ios17-text-base);
+    color: var(--ios17-text-secondary);
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.meditation-controls {
+    display: flex;
+    gap: var(--ios17-space-4);
+    justify-content: center;
+    margin-bottom: var(--ios17-space-6);
+    flex-wrap: wrap;
+}
+
+.meditation-btn {
+    padding: var(--ios17-space-4) var(--ios17-space-6);
+    background: var(--ios17-bg-secondary);
+    color: var(--ios17-text-primary);
+    border: 0.5px solid var(--ios17-bg-quaternary);
+    border-radius: var(--ios17-radius-xl);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: var(--ios17-text-base);
+    font-weight: 500;
+    transition: all 0.2s var(--ios17-ease-in-out);
+}
+
+.meditation-btn:hover {
+    background: var(--islamic-primary);
+    color: white;
+    border-color: var(--islamic-primary);
+    transform: translateY(-2px);
+}
+
+.meditation-btn:active {
+    transform: translateY(0) scale(0.95);
+}
+
+.meditation-timer {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 200;
+    color: var(--islamic-primary);
+    background: var(--ios17-bg-secondary);
+    padding: var(--ios17-space-8);
+    border-radius: var(--ios17-radius-2xl);
+    font-family: 'SF Pro Display', system-ui, sans-serif;
+    letter-spacing: -1px;
+    border: 0.5px solid var(--ios17-bg-quaternary);
+    box-shadow: var(--ios17-shadow-sm);
+}
+
+/* Responsive design for iOS 17 */
+@media (max-width: 768px) {
+    .app-header {
+        margin: 0;
+        border-radius: 0 0 var(--ios17-radius-xl) var(--ios17-radius-xl);
+    }
+    
+    .navigation {
+        margin: 0;
+        border-radius: var(--ios17-radius-xl) var(--ios17-radius-xl) 0 0;
+        padding: var(--ios17-space-2) var(--ios17-space-3);
+    }
+    
+    .nav-btn {
+        padding: var(--ios17-space-2) var(--ios17-space-3);
+        min-width: 60px;
+        font-size: 10px;
+    }
+    
+    .main-content {
+        padding: var(--ios17-space-6) var(--ios17-space-4) var(--ios17-space-12);
+    }
+    
+    .names-grid, .favorites-grid {
+        grid-template-columns: 1fr;
+        gap: var(--ios17-space-4);
+    }
+    
+    .modal-content {
+        margin: var(--ios17-space-4);
+        max-height: calc(100vh - 2rem);
+    }
+    
+    .card-actions {
+        flex-direction: column;
+        gap: var(--ios17-space-2);
+    }
+    
+    .detail-btn, .meditate-btn {
+        width: 100%;
+        text-align: center;
+        padding: var(--ios17-space-3) var(--ios17-space-4);
+    }
+    
+    .quick-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--ios17-space-3);
+    }
+    
+    .action-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+}
+
+/* Focus states for iOS 17 */
+*:focus-visible {
+    outline: 2px solid var(--islamic-primary);
+    outline-offset: 2px;
+    border-radius: var(--ios17-radius-sm);
+}
+
+/* Selection styling */
+::selection {
+    background-color: rgba(52, 199, 89, 0.2);
+    color: var(--ios17-text-primary);
+}
+
+/* Utilities */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* iOS 17 specific enhancements */
+@supports (backdrop-filter: blur(20px)) {
+    .app-header,
+    .navigation,
+    .modal-content {
+        background: var(--ios17-material-thick);
+    }
+}
+
+/* Interactive feedback */
+.name-card,
+.action-btn,
+.nav-btn,
+.meditation-btn {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+/* Smooth animations */
+@media (prefers-reduced-motion: no-preference) {
+    .name-card {
+        animation: cardSlideIn 0.6s var(--ios17-ease-out);
+    }
+    
+    .name-card:nth-child(1) { animation-delay: 0.1s; }
+    .name-card:nth-child(2) { animation-delay: 0.2s; }
+    .name-card:nth-child(3) { animation-delay: 0.3s; }
+    .name-card:nth-child(4) { animation-delay: 0.4s; }
+}
+
+@keyframes cardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healing Duas & Prayers - Healing Through Allah's Names</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Collection of healing duas and prayers using Allah's Beautiful Names for spiritual healing, comfort, and guidance in difficult times.">
+</head>
+<body>
+    <div id="app">
+        <header class="main-header">
+            <div class="header-container">
+                <div class="brand-section">
+                    <a href="index.html" class="brand-link">
+                        <span class="brand-icon">🌿</span>
+                        <span class="brand-name">Healing Names</span>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="search.html" class="nav-link">Find Healing</a>
+                    <a href="names.html" class="nav-link">Browse Names</a>
+                    <a href="duas.html" class="nav-link active">Duas</a>
+                    <a href="printable-cards.html" class="nav-link">Print Cards</a>
+                    <a href="favorites.html" class="nav-link">Favorites</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="main-content">
+            <!-- Duas Content -->>
+            <div class="duas-container">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h2>🤲 Healing Duas & Prayers</h2>
+                        <p>Ready-made supplications using Allah's Beautiful Names for spiritual healing and comfort</p>
+                    </div>
+                </div>
+
+                <!-- Categories Navigation -->
+                <div class="duas-categories">
+                    <div class="categories-header">
+                        <h3>Browse by Category</h3>
+                        <p>Choose the type of healing you seek</p>
+                    </div>
+                    
+                    <div class="category-grid">
+                        <button class="category-card active" data-category="all" onclick="showDuasCategory('all')">
+                            <div class="category-icon">🌟</div>
+                            <h4>All Duas</h4>
+                            <p>Complete collection</p>
+                        </button>
+                        
+                        <button class="category-card" data-category="emotional" onclick="showDuasCategory('emotional')">
+                            <div class="category-icon">💚</div>
+                            <h4>Emotional Healing</h4>
+                            <p>Anxiety, depression, grief</p>
+                        </button>
+                        
+                        <button class="category-card" data-category="spiritual" onclick="showDuasCategory('spiritual')">
+                            <div class="category-icon">🌙</div>
+                            <h4>Spiritual Growth</h4>
+                            <p>Faith, guidance, forgiveness</p>
+                        </button>
+                        
+                        <button class="category-card" data-category="physical" onclick="showDuasCategory('physical')">
+                            <div class="category-icon">🌿</div>
+                            <h4>Physical Wellness</h4>
+                            <p>Health, strength, recovery</p>
+                        </button>
+                        
+                        <button class="category-card" data-category="protection" onclick="showDuasCategory('protection')">
+                            <div class="category-icon">🛡️</div>
+                            <h4>Protection</h4>
+                            <p>Safety, evil eye, harm</p>
+                        </button>
+                        
+                        <button class="category-card" data-category="daily" onclick="showDuasCategory('daily')">
+                            <div class="category-icon">☀️</div>
+                            <h4>Daily Recitation</h4>
+                            <p>Morning, evening, routine</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search Section -->
+                <div class="duas-search">
+                    <div class="search-container">
+                        <input type="text" id="duas-search-input" placeholder="Search duas by keyword, condition, or name..." class="search-input">
+                        <button class="search-btn" onclick="searchDuas()">
+                            <span>🔍</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Duas Collection -->
+                <div class="duas-collection" id="duas-collection">
+                    <!-- Duas will be populated by JavaScript -->
+                </div>
+
+                <!-- Featured Quranic Verses -->
+                <div class="featured-verses">
+                    <div class="verses-header">
+                        <h3>🌟 Featured Healing Verses</h3>
+                        <p>Powerful Quranic verses for healing and comfort</p>
+                    </div>
+                    
+                    <div class="verses-grid">
+                        <div class="verse-card">
+                            <div class="verse-category">Healing</div>
+                            <div class="verse-arabic">وَإِذَا مَرِضْتُ فَهُوَ يَشْفِينِ</div>
+                            <div class="verse-translation">"And when I am ill, it is He who cures me."</div>
+                            <div class="verse-reference">
+                                <a href="https://quran.com/26/80" target="_blank" rel="noopener" class="quran-link">Quran 26:80</a>
+                            </div>
+                        </div>
+                        
+                        <div class="verse-card">
+                            <div class="verse-category">Comfort</div>
+                            <div class="verse-arabic">وَبَشِّرِ الصَّابِرِينَ</div>
+                            <div class="verse-translation">"And give good tidings to the patient."</div>
+                            <div class="verse-reference">
+                                <a href="https://quran.com/2/155" target="_blank" rel="noopener" class="quran-link">Quran 2:155</a>
+                            </div>
+                        </div>
+                        
+                        <div class="verse-card">
+                            <div class="verse-category">Peace</div>
+                            <div class="verse-arabic">أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ</div>
+                            <div class="verse-translation">"Verily, in the remembrance of Allah do hearts find rest."</div>
+                            <div class="verse-reference">
+                                <a href="https://quran.com/13/28" target="_blank" rel="noopener" class="quran-link">Quran 13:28</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Actions -->
+                <div class="related-actions">
+                    <div class="actions-header">
+                        <h3>🔗 Continue Your Healing Journey</h3>
+                        <p>Explore other ways to find spiritual healing</p>
+                    </div>
+                    
+                    <div class="actions-list">
+                        <a href="names.html" class="action-item">
+                            <div class="action-emoji">📖</div>
+                            <div class="action-info">
+                                <h4>Browse All 99 Names</h4>
+                                <p>Explore the complete collection of Allah's Beautiful Names</p>
+                            </div>
+                            <div class="action-arrow">→</div>
+                        </a>
+                        
+                        <a href="search.html" class="action-item">
+                            <div class="action-emoji">🌿</div>
+                            <div class="action-info">
+                                <h4>Find Specific Healing</h4>
+                                <p>Search for names based on your current needs</p>
+                            </div>
+                            <div class="action-arrow">→</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Dua Detail Modal -->
+        <div class="modal hidden" id="dua-modal">
+            <div class="modal-overlay" onclick="closeDuaModal()"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="dua-modal-title">Dua Details</h3>
+                    <button class="close-btn" onclick="closeDuaModal()">&times;</button>
+                </div>
+                <div class="modal-body" id="dua-modal-body">
+                    <!-- Modal content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Audio Player Modal -->
+        <div class="modal hidden" id="audio-modal">
+            <div class="modal-overlay" onclick="closeAudioModal()"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>🔊 Audio Recitation</h3>
+                    <button class="close-btn" onclick="closeAudioModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="audio-player">
+                        <div class="audio-info" id="audio-info">
+                            <!-- Audio info will be populated by JavaScript -->
+                        </div>
+                        <div class="audio-controls">
+                            <button class="audio-btn" id="play-pause-btn" onclick="toggleAudioPlay()">▶️</button>
+                            <div class="audio-progress">
+                                <div class="progress-bar" id="progress-bar"></div>
+                            </div>
+                            <div class="audio-time">
+                                <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="asma-ul-husna-data.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/duas.js"></script>
+</body>
+</html>
